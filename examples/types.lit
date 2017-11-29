@@ -1,0 +1,37 @@
+; Defining a list
+(let numbers (list 1 2 3 4))
+
+; Naive recursive sum function
+(define sum lst (
+  (if (empty lst) 0 (+ (head lst) (sum (tail lst))))
+))
+
+(print "Sum of " numbers " = " (sum numbers))
+
+; Definining a binary tree type
+(type BTree val left right)
+
+; Example binary tree
+(let tree
+  (BTree 4
+    (BTree(
+      2
+      (Btree 1)
+      (Btree 3)
+    ))
+    (BTree(
+      6
+      (Btree 5)
+      (Btree 7)
+    ))
+  )
+)
+
+; Checks if element is in tree
+(define in_tree tree n (
+  (if (empty tree) False (if (= (. tree val) n) True
+    (if (in_tree (. tree left)) True (in_tree (. tree right)))
+  ))
+))
+
+(print "Is 3 in tree " (in_tree tree 3))

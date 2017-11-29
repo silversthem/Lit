@@ -1,0 +1,22 @@
+(let number 2) ; Definition of constant
+
+(define pow2 x (* x x)) ; Definition of function
+
+(define pow n a (
+  if (= a 1) (
+    n
+  ) (
+    if (= a 2) (pow2 n)
+    ; a^b = (a^(b/2))^2 * (n if (n%2) else 1)
+    (* (pow2 (pow n (/ a 2))) (if (= 1 (% a 2)) n 1))
+    )))
+
+(define fac n (if (= n 1) 1 (* n (fac (- n 1)))))
+
+(define fib n a b (if (= n 0) (+ a b) (fib (- n 1) b (+ a b))))
+
+(print "10! = " (fac 10))
+
+(print "fib(12) = " (fib 10 0 1))
+
+(print "2^13 = " (pow number 13))
